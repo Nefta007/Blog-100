@@ -28,9 +28,6 @@ Comment.init({
     blog_comment: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            len: [1]
-        }
     }
 },
     {
