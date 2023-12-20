@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-6">
+        <h3>Create a New Post:</h3>
+
+        <form class="form new-post-form">
+            <div class="form-group">
+                <label for="blog-title">Title</label>
+                <input class="form-input" type="text" id="blog-title" name="blog-title" />
+            </div>
+            <div class="form-group">
+                <label for="post-description">Content</label>
+                <input class="form-input" type="text" id="post-description" name="post-description" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{#if blogposts.length}}
+<section>
+    <div class="col-md-6 post-list">
+        <h3>My Previous Post:</h3>
+        <ol>
+            {{#each blogposts as |blogpost|}}
+            <li>
+                <div class="row mb-2">
+                    <div class="col-md-8">
+                        <div class="blog-title" id="blog-title">
+                            <h2>{{title}}</h2>
+                        </div>
+                        <div class="blog-date" id="blog-date">
+                            <p>Posted on: {{format_date blog_date}}</p>
+                        </div>
+                        <div class="blog-description" id="post-description">
+                            <p>{{description}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-sm btn-danger" data-id="{{user_id}}">DELETE</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-sm btn-danger" data-id="{{user_id}}">UPDATE</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+</section>
+{{/if}}
+<script src="/js/dashboard.js"></script>

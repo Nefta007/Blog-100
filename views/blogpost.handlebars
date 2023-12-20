@@ -1,0 +1,38 @@
+<div class="blog-frame">
+    <div class="blog_heading">
+        <div class="blog_title">
+            <h2>{{title}}</h2>
+        </div>
+        <div class="curr_date">
+            <h3>Posted by {{user.username}} on {{format_date blog_date}}</h3>
+        </div>
+        <div class="post_description">
+            <p>{{description}}</p>
+        </div>
+        {{if logged_in}}
+        {{!-- <div id="myDiv">
+            {{#each classes}}
+            <form class="formClasses" action="/subject/{{this}}" role="form" method="POST">
+                <button type="submit" class="btn btn-primary btn-large">{{this}}</button>
+                {{/each}}
+        </div> --}}
+        <div class="new_post">
+            <form class="new_post_form" action="/api/comments" method="post">
+            <div class="comment_section">
+                <label for="newDescription">Description</label>
+                <input class="form-input" id="blog_body" name="blog_body"> 
+            </div>
+            <input type="hidden" name="blogPost_id" id="blogPost_id" value="{{id}}">
+            <button class="btn btn-primary>" type="submit">Add Description</button>
+            </form>
+        </div>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+    </div>
+    <div>
+        {{each comments as |comment|}}
+        <p>{{comment.blog_comment}}</p>
+        {{/each}}
+    </div>
+</div>
